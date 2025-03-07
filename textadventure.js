@@ -1,5 +1,5 @@
 // import prompt function
-const prompt = require('prompt-sync')();
+const promptsync = require('prompt-sync')();
 
 // Game state variables
 let playerName = "Sung Jin Woo"; // Protagonist name
@@ -9,12 +9,24 @@ let inventory = [];
 let location = "city"; // Starting location
 let gameOver = false;
 let demonsDefeated = 0;
-
+let endgame = !gameOver
 function startGame() {
-    console.log(`Welcome to the Demon Slayer Adventure, ${playerName}!`);
+    console.log(`Welcome to the Dungeon Adventure, ${playerName}!`);
     console.log(`As Sung Jin Woo, you must fight your way through demons to save the world!`);
     gameLoop();
 }
+function quitcheck(p){
+    if(p==='quit'){
+        process.exit()
+    }
+    return p
+}
+function prompt(message){
+    let answer=promptsync(message)
+    quitcheck(answer)
+    return answer
+}
+
 
 function gameLoop() {
     while (!gameOver) {
@@ -40,7 +52,7 @@ function gameLoop() {
 
 function cityPath() {
     console.log("\nYou are in a bustling city, but there are rumors of demons lurking nearby.");
-    let action = prompt("Do you want to fight demons, go to the forest, or check your inventory?");
+    let action = quitcheck(prompt("Do you want to fight demons, go to the forest, or check your inventory?"));
 
     if (action.toLowerCase() === "fight demons") {
         fightDemons();
@@ -49,7 +61,8 @@ function cityPath() {
         location = "forest"; // Move to forest
     } else if (action.toLowerCase() === "check inventory") {
         console.log("You check your inventory, but it's empty for now.");
-    } else {
+    } 
+    else {
         console.log("Invalid action! Please choose 'fight demons', 'forest', or 'check inventory'.");
     }
 }
@@ -109,7 +122,7 @@ function fightDemons() {
         console.log("\n--- Fight ---");
         console.log(`Demon Health: ${demonHealth}`);
         console.log(`Your Health: ${playerHealth}`);
-        let action = prompt("Do you want to attack, use an item, or equip the dagger?");
+        let action = prompt("Do you want to attack, use an item, endgame, or equip the dagger?");
 
 
         if (action.toLowerCase() === "attack") {
@@ -130,4 +143,5 @@ function fightDemons() {
         }
     }
 }
+
 startGame()
