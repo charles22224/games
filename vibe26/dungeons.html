@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBE26 - Dungeons</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dungeons.css">
+</head>
+<body>
+    <div class="dungeon-container">
+        <!-- World Map -->
+        <div class="world-map">
+            <div class="map-regions">
+                <!-- Forest Region -->
+                <div class="region forest-region">
+                    <div class="dungeon standard-dungeon" data-type="standard" data-level="1">
+                        <div class="dungeon-icon">🌳</div>
+                        <div class="dungeon-name">Forest Temple</div>
+                        <div class="dungeon-level">Level 1-5</div>
+                    </div>
+                    <div class="dungeon elite-dungeon" data-type="elite" data-level="10">
+                        <div class="dungeon-icon">🌲</div>
+                        <div class="dungeon-name">Ancient Grove</div>
+                        <div class="dungeon-level">Level 10-15</div>
+                    </div>
+                </div>
+
+                <!-- Mountain Region -->
+                <div class="region mountain-region">
+                    <div class="dungeon standard-dungeon" data-type="standard" data-level="5">
+                        <div class="dungeon-icon">⛰️</div>
+                        <div class="dungeon-name">Crystal Caves</div>
+                        <div class="dungeon-level">Level 5-10</div>
+                    </div>
+                    <div class="dungeon hidden-dungeon" data-type="hidden" data-level="20">
+                        <div class="dungeon-icon">🗻</div>
+                        <div class="dungeon-name">Dragon's Lair</div>
+                        <div class="dungeon-level">Level 20+</div>
+                    </div>
+                </div>
+
+                <!-- Desert Region -->
+                <div class="region desert-region">
+                    <div class="dungeon standard-dungeon" data-type="standard" data-level="8">
+                        <div class="dungeon-icon">🏜️</div>
+                        <div class="dungeon-name">Sand Temple</div>
+                        <div class="dungeon-level">Level 8-13</div>
+                    </div>
+                    <div class="dungeon elite-dungeon" data-type="elite" data-level="15">
+                        <div class="dungeon-icon">🌵</div>
+                        <div class="dungeon-name">Oasis of Death</div>
+                        <div class="dungeon-level">Level 15-20</div>
+                    </div>
+                </div>
+
+                <!-- Ice Region -->
+                <div class="region ice-region">
+                    <div class="dungeon standard-dungeon" data-type="standard" data-level="12">
+                        <div class="dungeon-icon">❄️</div>
+                        <div class="dungeon-name">Frost Keep</div>
+                        <div class="dungeon-level">Level 12-17</div>
+                    </div>
+                    <div class="dungeon hidden-dungeon" data-type="hidden" data-level="25">
+                        <div class="dungeon-icon">🏔️</div>
+                        <div class="dungeon-name">Ice Queen's Palace</div>
+                        <div class="dungeon-level">Level 25+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dungeon Info Panel -->
+        <div class="dungeon-info-panel">
+            <div class="panel-header">
+                <h2 class="dungeon-title">Select a Dungeon</h2>
+                <button class="close-panel">×</button>
+            </div>
+            <div class="panel-content">
+                <div class="dungeon-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Type:</span>
+                        <span class="detail-value dungeon-type">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Level Range:</span>
+                        <span class="detail-value dungeon-level">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Difficulty:</span>
+                        <span class="detail-value dungeon-difficulty">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Recommended Party:</span>
+                        <span class="detail-value dungeon-party">-</span>
+                    </div>
+                </div>
+                <div class="dungeon-description">
+                    <h3>Description</h3>
+                    <p class="dungeon-text">Select a dungeon to view its details.</p>
+                </div>
+                <div class="dungeon-actions">
+                    <button class="enter-dungeon" disabled>Enter Dungeon</button>
+                    <button class="view-rewards">View Rewards</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="dungeonSelect">
+            <source src="assets/dungeon-select.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="dungeonEnter">
+            <source src="assets/dungeon-enter.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="dungeons.js"></script>
+</body>
+</html> 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Chest Plate Base -->
+    <path d="M60 40 L 140 40 L 160 60 L 160 120 C 160 140, 140 160, 120 160 L 80 160 C 60 160, 40 140, 40 120 L 40 60 Z" 
+          fill="#2a2a2a" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Chest Details -->
+    <path d="M70 60 L 130 60" stroke="#ff0000" stroke-width="1"/>
+    <path d="M80 80 L 120 80" stroke="#ff0000" stroke-width="1"/>
+    <path d="M90 100 L 110 100" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Shoulder Plates -->
+    <path d="M40 80 C 30 80, 30 100, 40 100" stroke="#ff0000" stroke-width="2"/>
+    <path d="M160 80 C 170 80, 170 100, 160 100" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Glowing Effect -->
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#ff0000" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite"/>
+    </circle>
+</svg> 

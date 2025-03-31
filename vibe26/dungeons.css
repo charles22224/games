@@ -1,0 +1,236 @@
+/* Dungeon Container */
+.dungeon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+/* World Map */
+.world-map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    z-index: 1;
+}
+
+.map-regions {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Regions */
+.region {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.forest-region {
+    background: linear-gradient(135deg, #2d5a27, #1a3a15);
+}
+
+.mountain-region {
+    background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+}
+
+.desert-region {
+    background: linear-gradient(135deg, #c2a661, #8b7355);
+}
+
+.ice-region {
+    background: linear-gradient(135deg, #a8d1ff, #6b8cae);
+}
+
+/* Dungeons */
+.dungeon {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.dungeon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.dungeon-icon {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.dungeon-name {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.dungeon-level {
+    color: #ff0000;
+    font-size: 12px;
+}
+
+/* Dungeon Types */
+.standard-dungeon {
+    border-color: #ff0000;
+}
+
+.elite-dungeon {
+    border-color: #ffd700;
+}
+
+.hidden-dungeon {
+    border-color: #800080;
+}
+
+/* Dungeon Info Panel */
+.dungeon-info-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ff0000;
+    border-radius: 15px;
+    z-index: 2;
+    display: none;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ff0000;
+}
+
+.dungeon-title {
+    color: #fff;
+    margin: 0;
+    font-size: 24px;
+}
+
+.close-panel {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.panel-content {
+    padding: 20px;
+}
+
+.dungeon-details {
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.detail-label {
+    color: #ff0000;
+}
+
+.dungeon-description {
+    margin-bottom: 20px;
+}
+
+.dungeon-description h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.dungeon-text {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.dungeon-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.dungeon-actions button {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ff0000;
+    background: transparent;
+    color: #ff0000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dungeon-actions button:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.dungeon-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Dungeon Positions */
+.forest-region .dungeon:nth-child(1) { top: 20%; left: 20%; }
+.forest-region .dungeon:nth-child(2) { top: 60%; left: 70%; }
+
+.mountain-region .dungeon:nth-child(1) { top: 30%; left: 30%; }
+.mountain-region .dungeon:nth-child(2) { top: 70%; left: 60%; }
+
+.desert-region .dungeon:nth-child(1) { top: 40%; left: 40%; }
+.desert-region .dungeon:nth-child(2) { top: 60%; left: 50%; }
+
+.ice-region .dungeon:nth-child(1) { top: 20%; left: 60%; }
+.ice-region .dungeon:nth-child(2) { top: 70%; left: 30%; }
+
+/* Animations */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.3);
+    }
+}
+
+.elite-dungeon {
+    animation: glow 2s infinite;
+}
+
+.hidden-dungeon {
+    animation: glow 2s infinite;
+    animation-delay: 1s;
+} 

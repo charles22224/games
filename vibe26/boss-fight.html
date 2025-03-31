@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Fight - The Dungeons Await</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="boss-fight.css">
+    <!-- Three.js dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <!-- Start Screen -->
+    <div class="start-screen">
+        <div class="start-content">
+            <h1 class="start-title">Boss Fight</h1>
+            <div class="boss-preview"></div>
+            <div class="boss-info">
+                <h2 class="boss-name">Dragon Lord</h2>
+                <p class="boss-description">
+                    A fearsome dragon that has ruled these lands for centuries. Its power grows with each phase of the battle.
+                </p>
+                <div class="boss-stats">
+                    <div class="stat">
+                        <span class="stat-label">Health</span>
+                        <span class="stat-value">1000</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Phases</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Difficulty</span>
+                        <span class="stat-value">Hard</span>
+                    </div>
+                </div>
+            </div>
+            <button class="start-button">Start Battle</button>
+        </div>
+    </div>
+
+    <!-- Boss Fight Container -->
+    <div class="boss-fight-container">
+        <!-- UI Overlay -->
+        <div class="ui-overlay">
+            <!-- Boss Info -->
+            <div class="boss-info-panel">
+                <h2 class="boss-name">Dragon Lord</h2>
+                <div class="boss-health-bar">
+                    <div class="health-fill"></div>
+                    <div class="phase-indicator"></div>
+                </div>
+                <div class="phase-text">Phase 1</div>
+            </div>
+
+            <!-- Player Info -->
+            <div class="player-info-panel">
+                <div class="player-health-bar">
+                    <div class="health-fill"></div>
+                </div>
+                <div class="player-mana-bar">
+                    <div class="mana-fill"></div>
+                </div>
+            </div>
+
+            <!-- Combat UI -->
+            <div class="combat-ui">
+                <div class="ability-bar">
+                    <button class="ability" data-ability="attack">
+                        <span class="ability-icon">⚔️</span>
+                        <span class="ability-name">Attack</span>
+                        <div class="cooldown"></div>
+                    </button>
+                    <button class="ability" data-ability="fireball">
+                        <span class="ability-icon">🔥</span>
+                        <span class="ability-name">Fireball</span>
+                        <div class="cooldown"></div>
+                    </button>
+                    <button class="ability" data-ability="shield">
+                        <span class="ability-icon">🛡️</span>
+                        <span class="ability-name">Shield</span>
+                        <div class="cooldown"></div>
+                    </button>
+                    <button class="ability" data-ability="heal">
+                        <span class="ability-icon">💚</span>
+                        <span class="ability-name">Heal</span>
+                        <div class="cooldown"></div>
+                    </button>
+                </div>
+                <div class="combat-log">
+                    <div class="log-messages"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase Transition -->
+        <div class="phase-transition">
+            <h2 class="phase-text">Phase 2</h2>
+            <p class="phase-description">The boss grows stronger and more aggressive!</p>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen">
+            <div class="result-content">
+                <h1 class="result-title">Victory!</h1>
+                <div class="rewards">
+                    <div class="reward-item">
+                        <span class="reward-icon">💰</span>
+                        <span>Gold: 1000</span>
+                    </div>
+                    <div class="reward-item">
+                        <span class="reward-icon">⭐</span>
+                        <span>Experience: 500</span>
+                    </div>
+                    <div class="reward-item">
+                        <span class="reward-icon">🎁</span>
+                        <span>Rare Item Drop!</span>
+                    </div>
+                </div>
+                <button class="continue-button">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="boss-music" src="assets/audio/boss-music.mp3" loop></audio>
+    <audio id="ability-sound" src="assets/audio/ability.mp3"></audio>
+    <audio id="phase-transition-sound" src="assets/audio/phase-transition.mp3"></audio>
+    <audio id="victory-sound" src="assets/audio/victory.mp3"></audio>
+    <audio id="defeat-sound" src="assets/audio/defeat.mp3"></audio>
+
+    <!-- Scripts -->
+    <script src="boss-fight.js"></script>
+</body>
+</html> 

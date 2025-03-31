@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dungeons Await</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #ui {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            display: none;
+        }
+
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .start-content {
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff0000;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+        }
+
+        .start-title {
+            font-size: 48px;
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .start-button {
+            padding: 15px 40px;
+            font-size: 24px;
+            background: transparent;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            pointer-events: auto;
+        }
+
+        .start-button:hover {
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        #ability-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        .ability-button {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ff0000;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ability-button:hover {
+            background: rgba(255, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .ability-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .ability-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .ability-name {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .cooldown-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #ff0000;
+        }
+
+        #player-stats {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            pointer-events: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #boss-stats {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            pointer-events: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .health-bar {
+            width: 200px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+
+        .health-fill {
+            height: 100%;
+            background: #ff0000;
+            transition: width 0.3s ease;
+        }
+
+        .mana-bar {
+            width: 200px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #0000ff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+
+        .mana-fill {
+            height: 100%;
+            background: #0000ff;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-screen">
+        <div class="start-content">
+            <h1 class="start-title">The Dungeons Await</h1>
+            <button class="start-button" onclick="startGame()">Enter the Dungeon</button>
+        </div>
+    </div>
+
+    <div id="ui">
+        <div id="player-stats">
+            <div>Health: <span id="player-health">100</span>/100</div>
+            <div class="health-bar">
+                <div id="player-health-fill" class="health-fill" style="width: 100%"></div>
+            </div>
+            <div>Mana: <span id="player-mana">100</span>/100</div>
+            <div class="mana-bar">
+                <div id="player-mana-fill" class="mana-fill" style="width: 100%"></div>
+            </div>
+        </div>
+
+        <div id="boss-stats">
+            <div>Boss Health: <span id="boss-health">1000</span>/1000</div>
+            <div class="health-bar">
+                <div id="boss-health-fill" class="health-fill" style="width: 100%"></div>
+            </div>
+            <div>Phase: <span id="boss-phase">1</span>/3</div>
+        </div>
+
+        <div id="ability-buttons">
+            <button class="ability-button" data-ability="Attack">
+                <div class="ability-icon">⚔️</div>
+                <div class="ability-name">Attack</div>
+            </button>
+            <button class="ability-button" data-ability="Fireball">
+                <div class="ability-icon">🔥</div>
+                <div class="ability-name">Fireball</div>
+            </button>
+            <button class="ability-button" data-ability="Shield">
+                <div class="ability-icon">🛡️</div>
+                <div class="ability-name">Shield</div>
+            </button>
+            <button class="ability-button" data-ability="Heal">
+                <div class="ability-icon">💚</div>
+                <div class="ability-name">Heal</div>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 

@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.menu-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('assets/background.jpg') center/cover no-repeat;
+}
+
+.menu-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.game-title {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.start-button {
+    position: relative;
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.start-button:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+    animation: buttonGlow 2s linear infinite;
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-container:hover .background-overlay {
+    opacity: 1;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
+                     0 0 30px rgba(255, 0, 0, 0.6),
+                     0 0 40px rgba(255, 0, 0, 0.4);
+    }
+}
+
+@keyframes buttonGlow {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Lightning effect */
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 0, 0, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: lightning 3s linear infinite;
+}
+
+@keyframes lightning {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* Customization Tab Styles */
+.customization-tab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.customization-tab:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+.player-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #ff0000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+.player-icon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: iconPulse 2s linear infinite;
+}
+
+.shadow-hand {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.8) 70%);
+    animation: handGrip 3s ease-in-out infinite;
+}
+
+.tab-text {
+    color: #fff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.customization-tab:hover .tab-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.icon-shards {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.icon-shards::before,
+.icon-shards::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.5), transparent);
+    animation: shardRotate 4s linear infinite;
+}
+
+.icon-shards::after {
+    animation-delay: -2s;
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes handGrip {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shardRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Shatter Animation */
+.customization-tab.shatter {
+    animation: shatterEffect 1s ease-out forwards;
+}
+
+@keyframes shatterEffect {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Shard Particles */
+.shard-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff0000;
+    border-radius: 50%;
+    animation: shardFly 1s ease-out forwards;
+}
+
+@keyframes shardFly {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu-button {
+    position: relative;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    min-width: 200px;
+}
+
+.menu-button:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.menu-button .button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-button .button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 0, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.menu-button:hover .button-glow {
+    left: 100%;
+} 

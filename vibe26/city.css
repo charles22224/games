@@ -1,0 +1,263 @@
+/* City Container */
+.city-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+/* Background Elements */
+.city-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.gothic-buildings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    opacity: 0.8;
+}
+
+.magic-ambience {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+    animation: pulse 4s infinite;
+}
+
+.day-night-cycle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+    transition: background 1s ease;
+}
+
+/* Main Content */
+.city-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Player Character */
+.player-character {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ff0000;
+    border-radius: 50%;
+    transition: transform 0.1s ease;
+}
+
+/* NPCs */
+.npcs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.npc {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.npc:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.npc-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.npc-name {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+}
+
+/* UI Elements */
+.city-ui {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.time-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-stats {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.health-bar, .mana-bar {
+    width: 200px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.health-bar::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ff0000;
+    transition: width 0.3s ease;
+}
+
+.mana-bar::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #0000ff;
+    transition: width 0.3s ease;
+}
+
+.level {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.minimap {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+}
+
+.player-marker {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff0000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Interaction Menu */
+.interaction-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 300px;
+    z-index: 4;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.npc-title {
+    color: #fff;
+    margin: 0;
+    font-size: 20px;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-option {
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-option:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Day/Night Cycle */
+.city-container.night .day-night-cycle {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.city-container.night .gothic-buildings {
+    opacity: 0.6;
+} 

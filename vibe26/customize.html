@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Customization - Solo Leveling</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="customize.css">
+</head>
+<body class="customization-screen">
+    <div class="customization-container">
+        <div class="customization-header">
+            <h1 class="customization-title">Awakening the Hunter</h1>
+            <div class="character-preview">
+                <div class="preview-container">
+                    <div class="character-model">
+                        <div class="arms"></div>
+                        <div class="legs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="customization-content">
+            <div class="customization-tabs">
+                <button class="tab-button active" data-tab="appearance">Appearance</button>
+                <button class="tab-button" data-tab="body">Body</button>
+                <button class="tab-button" data-tab="clothing">Clothing & Armor</button>
+                <button class="tab-button" data-tab="class">Class & Specialization</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Appearance Tab -->
+                <div class="tab-panel active" id="appearance">
+                    <div class="section">
+                        <h2>Face & Head</h2>
+                        <div class="slider-group">
+                            <div class="slider-item">
+                                <label>Jawline</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Cheekbones</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Forehead Height</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Chin Width</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Eyes</h2>
+                        <div class="slider-group">
+                            <div class="slider-item">
+                                <label>Pupil Size</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Iris Shape</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="color-picker">
+                                <label>Iris Color</label>
+                                <div class="color-options">
+                                    <button class="color-option" data-color="#000000"></button>
+                                    <button class="color-option" data-color="#FF0000"></button>
+                                    <button class="color-option" data-color="#0000FF"></button>
+                                </div>
+                            </div>
+                            <div class="checkbox-group">
+                                <label>
+                                    <input type="checkbox" class="glow-effect">
+                                    Glowing Pupils
+                                </label>
+                                <label>
+                                    <input type="checkbox" class="cracked-effect">
+                                    Cracked Red Eyes
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Hair</h2>
+                        <div class="style-selector">
+                            <label>Style</label>
+                            <select class="style-dropdown">
+                                <option value="messy">Messy</option>
+                                <option value="spiky">Spiky</option>
+                                <option value="medium">Medium Length</option>
+                            </select>
+                        </div>
+                        <div class="color-picker">
+                            <label>Color</label>
+                            <div class="color-options">
+                                <button class="color-option" data-color="#000000"></button>
+                                <button class="color-option" data-color="#8B4513"></button>
+                                <button class="color-option" data-color="#FFD700"></button>
+                                <button class="color-option locked" data-color="#C0C0C0">
+                                    <span class="lock-icon">🔒</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Tab -->
+                <div class="tab-panel" id="body">
+                    <div class="section">
+                        <h2>Body Type</h2>
+                        <div class="slider-group">
+                            <div class="slider-item">
+                                <label>Physique</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Height</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                            <div class="slider-item">
+                                <label>Muscle Definition</label>
+                                <input type="range" min="0" max="100" value="50" class="slider">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clothing & Armor Tab -->
+                <div class="tab-panel" id="clothing">
+                    <div class="section">
+                        <h2>Equipment</h2>
+                        <div class="equipment-slots">
+                            <div class="equipment-slot">
+                                <span class="slot-name">Helmet</span>
+                                <div class="slot-content">
+                                    <img src="assets/helmet.svg" alt="Helmet" class="equipment-image">
+                                </div>
+                            </div>
+                            <div class="equipment-slot">
+                                <span class="slot-name">Chest Armor</span>
+                                <div class="slot-content">
+                                    <img src="assets/chest.svg" alt="Chest Armor" class="equipment-image">
+                                </div>
+                            </div>
+                            <div class="equipment-slot">
+                                <span class="slot-name">Gloves</span>
+                                <div class="slot-content">
+                                    <img src="assets/gloves.svg" alt="Gloves" class="equipment-image">
+                                </div>
+                            </div>
+                            <div class="equipment-slot">
+                                <span class="slot-name">Boots</span>
+                                <div class="slot-content">
+                                    <img src="assets/boots.svg" alt="Boots" class="equipment-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class & Specialization Tab -->
+                <div class="tab-panel" id="class">
+                    <div class="section">
+                        <h2>Class Selection</h2>
+                        <div class="class-options">
+                            <div class="class-card">
+                                <h3>Warrior</h3>
+                                <p>Master of close combat and physical strength</p>
+                                <button class="select-class">Select</button>
+                            </div>
+                            <div class="class-card">
+                                <h3>Mage</h3>
+                                <p>Wielder of powerful spells and magical abilities</p>
+                                <button class="select-class">Select</button>
+                            </div>
+                            <div class="class-card">
+                                <h3>Ranger</h3>
+                                <p>Expert in ranged combat and agility</p>
+                                <button class="select-class">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="customization-footer">
+            <button class="save-button">Save Changes</button>
+            <button class="cancel-button">Cancel</button>
+        </div>
+    </div>
+    <script src="customize.js"></script>
+</body>
+</html> 

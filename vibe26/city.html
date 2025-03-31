@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBE26 - The Dungeons Await</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="city.css">
+</head>
+<body>
+    <div class="city-container">
+        <!-- Background Elements -->
+        <div class="city-background">
+            <div class="gothic-buildings"></div>
+            <div class="magic-ambience"></div>
+            <div class="day-night-cycle"></div>
+        </div>
+
+        <!-- Main City Content -->
+        <div class="city-content">
+            <!-- Player Character -->
+            <div class="player-character"></div>
+
+            <!-- NPCs -->
+            <div class="npcs">
+                <div class="npc trader" data-npc="trader">
+                    <div class="npc-icon">💰</div>
+                    <div class="npc-name">Merchant</div>
+                </div>
+                <div class="npc blacksmith" data-npc="blacksmith">
+                    <div class="npc-icon">⚒️</div>
+                    <div class="npc-name">Blacksmith</div>
+                </div>
+                <div class="npc guild-master" data-npc="guild">
+                    <div class="npc-icon">🏰</div>
+                    <div class="npc-name">Guild Master</div>
+                </div>
+                <div class="npc quest-giver" data-npc="quest">
+                    <div class="npc-icon">📜</div>
+                    <div class="npc-name">Quest Master</div>
+                </div>
+            </div>
+
+            <!-- UI Elements -->
+            <div class="city-ui">
+                <div class="time-display">
+                    <span class="time">12:00</span>
+                    <span class="day-night-indicator">☀️</span>
+                </div>
+                <div class="player-stats">
+                    <div class="health-bar"></div>
+                    <div class="mana-bar"></div>
+                    <div class="level">Level 1</div>
+                </div>
+                <div class="minimap">
+                    <div class="player-marker"></div>
+                </div>
+            </div>
+
+            <!-- Interaction Menu -->
+            <div class="interaction-menu" style="display: none;">
+                <div class="menu-header">
+                    <h3 class="npc-title">NPC Name</h3>
+                    <button class="close-menu">×</button>
+                </div>
+                <div class="menu-content">
+                    <div class="menu-options">
+                        <button class="menu-option">Talk</button>
+                        <button class="menu-option">Trade</button>
+                        <button class="menu-option">Quest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="cityAmbience" loop>
+            <source src="assets/city-ambience.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="footsteps">
+            <source src="assets/footsteps.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="npcInteraction">
+            <source src="assets/npc-interaction.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="city.js"></script>
+</body>
+</html> 

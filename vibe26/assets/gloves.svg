@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Left Glove -->
+    <path d="M40 60 C 40 40, 60 40, 80 40 C 100 40, 100 60, 100 80 C 100 100, 80 100, 60 100 C 40 100, 40 80, 40 60" 
+          fill="#2a2a2a" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Right Glove -->
+    <path d="M120 60 C 120 40, 140 40, 160 40 C 180 40, 180 60, 180 80 C 180 100, 160 100, 140 100 C 120 100, 120 80, 120 60" 
+          fill="#2a2a2a" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Glove Details -->
+    <path d="M60 60 L 80 60" stroke="#ff0000" stroke-width="1"/>
+    <path d="M140 60 L 160 60" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Glowing Effect -->
+    <circle cx="100" cy="100" r="30" fill="none" stroke="#ff0000" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+    </circle>
+</svg> 

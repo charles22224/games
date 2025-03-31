@@ -1,0 +1,531 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Three.js canvas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* UI Overlay */
+.ui-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Boss Info Panel */
+.boss-info-panel {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    text-align: center;
+    pointer-events: auto;
+}
+
+.boss-name {
+    color: #ff0000;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.boss-health-bar {
+    width: 300px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.health-fill {
+    width: 100%;
+    height: 100%;
+    background: #ff0000;
+    transition: width 0.3s ease;
+}
+
+.phase-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: phaseGlow 2s infinite;
+}
+
+.phase-text {
+    color: #ff0000;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Player Info Panel */
+.player-info-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border: 2px solid #0000ff;
+    border-radius: 10px;
+    pointer-events: auto;
+}
+
+.player-health-bar,
+.player-mana-bar {
+    width: 200px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #0000ff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.player-health-bar .health-fill {
+    width: 100%;
+    height: 100%;
+    background: #0000ff;
+    transition: width 0.3s ease;
+}
+
+.player-mana-bar .mana-fill {
+    width: 100%;
+    height: 100%;
+    background: #00ffff;
+    transition: width 0.3s ease;
+}
+
+/* Combat UI */
+.combat-ui {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    pointer-events: auto;
+}
+
+.ability-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ability {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ability:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.ability:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ability-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.ability-name {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.cooldown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ability:disabled .cooldown {
+    opacity: 1;
+}
+
+.combat-log {
+    width: 300px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.log-messages {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Phase Transition */
+.phase-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.phase-transition.active {
+    opacity: 1;
+}
+
+.phase-text {
+    color: #ff0000;
+    font-size: 48px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.phase-description {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Result Screen */
+.result-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+.result-content {
+    text-align: center;
+    color: #fff;
+}
+
+.result-title {
+    font-size: 48px;
+    color: #ff0000;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.rewards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.reward-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.reward-icon {
+    font-size: 24px;
+}
+
+.continue-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+/* Start Screen */
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.start-content {
+    text-align: center;
+    color: #fff;
+    max-width: 800px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff0000;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+}
+
+.start-title {
+    font-size: 48px;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+.boss-preview {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 30px;
+    background: url('assets/boss-sprite.png') center/contain no-repeat;
+    animation: bossIdle 2s infinite;
+}
+
+.boss-info {
+    margin-bottom: 40px;
+}
+
+.boss-name {
+    font-size: 32px;
+    color: #ff0000;
+    margin-bottom: 15px;
+}
+
+.boss-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.boss-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-label {
+    color: #888;
+    font-size: 14px;
+}
+
+.stat-value {
+    color: #ff0000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.start-button {
+    padding: 15px 40px;
+    font-size: 24px;
+    background: transparent;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.start-button:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes bossIdle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes phaseGlow {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Environmental Effects */
+.arena-background.forest {
+    background: linear-gradient(to bottom, #2d5a27, #1a3a15);
+}
+
+.arena-background.mountain {
+    background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+}
+
+.arena-background.desert {
+    background: linear-gradient(to bottom, #c2a661, #8b7355);
+}
+
+.arena-background.ice {
+    background: linear-gradient(to bottom, #a8d1ff, #6b8cae);
+}
+
+/* Boss Fight Container */
+.boss-fight-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.boss-fight-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Arena Background */
+.arena-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    z-index: 1;
+    display: block;
+}
+
+.environmental-effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: block;
+}
+
+.platforms {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: block;
+}
+
+/* Boss Character */
+.boss-character {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+}
+
+.boss-sprite {
+    width: 100%;
+    height: 100%;
+    background: url('assets/boss-sprite.png') center/contain no-repeat;
+    animation: bossIdle 2s infinite;
+}
+
+/* Player Character */
+.player-character {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    z-index: 2;
+}
+
+.player-sprite {
+    width: 100%;
+    height: 100%;
+    background: url('assets/player-sprite.png') center/contain no-repeat;
+    animation: playerIdle 1s infinite;
+} 

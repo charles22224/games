@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Helmet Base -->
+    <path d="M100 40 C 60 40, 40 60, 40 100 C 40 140, 60 160, 100 160 C 140 160, 160 140, 160 100 C 160 60, 140 40, 100 40" 
+          fill="#1a1a1a" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Helmet Crest -->
+    <path d="M100 40 C 80 40, 70 50, 70 70 L 130 70 C 130 50, 120 40, 100 40" 
+          fill="#2a2a2a" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Helmet Details -->
+    <path d="M60 80 L 140 80" stroke="#ff0000" stroke-width="2"/>
+    <path d="M70 90 L 130 90" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Helmet Ornaments -->
+    <path d="M80 60 C 80 50, 85 45, 90 45 C 95 45, 100 50, 100 60" 
+          fill="none" stroke="#ff0000" stroke-width="1"/>
+    <path d="M120 60 C 120 50, 115 45, 110 45 C 105 45, 100 50, 100 60" 
+          fill="none" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Helmet Spikes -->
+    <path d="M70 70 L 70 60" stroke="#ff0000" stroke-width="2"/>
+    <path d="M130 70 L 130 60" stroke="#ff0000" stroke-width="2"/>
+    <path d="M100 40 L 100 30" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Helmet Face Guard -->
+    <path d="M60 100 C 60 90, 70 85, 80 85 L 120 85 C 130 85, 140 90, 140 100" 
+          fill="none" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Pointy Chin Guard -->
+    <path d="M80 100 C 80 95, 85 90, 90 90 L 110 90 C 115 90, 120 95, 120 100" 
+          fill="#2a2a2a" stroke="#ff0000" stroke-width="2"/>
+    <path d="M90 90 L 100 110" stroke="#ff0000" stroke-width="2"/>
+    <path d="M110 90 L 100 110" stroke="#ff0000" stroke-width="2"/>
+    
+    <!-- Chin Guard Details -->
+    <path d="M85 95 L 95 95" stroke="#ff0000" stroke-width="1"/>
+    <path d="M105 95 L 115 95" stroke="#ff0000" stroke-width="1"/>
+    <path d="M90 100 L 110 100" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Helmet Decorative Lines -->
+    <path d="M75 65 L 85 65" stroke="#ff0000" stroke-width="1"/>
+    <path d="M115 65 L 125 65" stroke="#ff0000" stroke-width="1"/>
+    <path d="M90 75 L 110 75" stroke="#ff0000" stroke-width="1"/>
+    
+    <!-- Helmet Shading -->
+    <path d="M60 80 C 60 70, 70 65, 80 65 L 120 65 C 130 65, 140 70, 140 80" 
+          fill="none" stroke="#ff0000" stroke-width="1" opacity="0.3"/>
+    
+    <!-- Glowing Effect -->
+    <circle cx="100" cy="100" r="30" fill="none" stroke="#ff0000" stroke-width="1" opacity="0.3">
+        <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Additional Glow Effects -->
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#ff0000" stroke-width="1" opacity="0.1">
+        <animate attributeName="r" values="40;45;40" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="100" r="50" fill="none" stroke="#ff0000" stroke-width="1" opacity="0.05">
+        <animate attributeName="r" values="50;55;50" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Shadow Effect -->
+    <path d="M60 80 C 60 70, 70 65, 80 65 L 120 65 C 130 65, 140 70, 140 80" 
+          fill="none" stroke="#000000" stroke-width="1" opacity="0.2"/>
+</svg> 
